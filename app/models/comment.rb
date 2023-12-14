@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
   after_create :generate_mail
 
   private
-  def generate_mail 
+  def generate_mail
     UserMailer.with(tweet: tweet, user: user, comment: self).commented_email.deliver_now
   end
 end

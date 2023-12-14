@@ -2,6 +2,7 @@
 	<body>
 	  <%= image_tag attachments['Default_Tweet_Button.png'].url %>
 	  <p> <%= @user.name %> Commented <strong> <%= @comment.body %> </strong> on your Tweet</p>
-	  <p> Total number of comments on you tweet : <%= @tweet.comments.count%>
+	  <p> <%= @user.name %> and <%= @tweet.comments.count - 1%> others commented on your tweet </p>
+	  <p> Total number of comments on you tweet : <%= @tweet.comments.count%></p>
 	</body>
 </html>

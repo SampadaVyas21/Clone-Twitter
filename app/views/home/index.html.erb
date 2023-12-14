@@ -1,0 +1,5 @@
+<%= stylesheet_link_tag "custom" %>
+<% if user_signed_in? %> 
+<%= link_to "Go to Feed", tweet_feed_path, class: "btn btn-outline-primary" %>
+ <%end %> 
+

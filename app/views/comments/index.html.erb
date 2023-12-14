@@ -1,0 +1,36 @@
+<div class="boxed" style="height: 300px; width:500px; margin-left: 36.5%;background-color: white;">
+  <div style="padding-top: 20px; padding-left: 20px;">
+    <% if @tweett.images.attached? %>
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <% @tweett.images.each_with_index do |pic,i| %>       
+            <div class="carousel-item <%= "active" if i == 0 %>">  
+              <% if pic.content_type.include?("image") %>            
+                <%= image_tag pic, :width => 440, :height => 200, style:"margin-left: 10px;" %>
+              <%else%>
+                <%= video_tag rails_blob_path(pic) ,autoplay: true, muted: 'muted', loop: :loop, :width => 440, :height => 200, style:"margin-left: 10px;", controls: true %>
+              <%end%>    
+              </div>
+            <%end%>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    <% else %>
+      <i class="fa fa-twitter" aria-hidden="true" style="color: gray; font-size: 200px; position: relative;left: 28%; "></i>     
+    <% end%><br>
+    <%= @tweett.content %><br>
+  </div>
+</div>
+ <% @comment = Comment.new %>
+<%= render template: "comments/new" , locals: {:tweet_id => @tweett.id }   %>
+<%  @com.each do |comment| %>
+  <strong><%= comment.user.name %></strong> Posted a Comment: <br>
+  <%= comment.body %><br> <br>
+<% end %>

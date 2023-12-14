@@ -1,0 +1,81 @@
+<%= stylesheet_link_tag "custom"%>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<% if user_signed_in? %> 
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#"><strong><i class="fa fa-twitter" aria-hidden="true" style="color: #1a53ff; font-size: xx-large; margin-left: 50px;" ;></i></strong></a>
+
+  <!-- <div class="collapse navbar-collapse" id="navbarTogglerDemo03"> -->
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <div class="navi" style="margin-left: 35px;">
+        <a class="nav-link" href="/tweet_feed">My Feed <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/home">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Connections
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to "Followers",home_casebtn_path(home_id = "follower"), class: "btn btn-link", style: "text-decoration: none; color: black" %><br>
+          <%= link_to "Followings",home_casebtn_path(home_id = "following"), class: "btn btn-link", style: "text-decoration: none; color: black" %>
+        </div>
+      </li>
+    </ul>
+    <!-- <form class="form-inline my-2"> -->
+    
+      <%= form_tag(tweet_feed_path, :method => "get", id:'search_form') do %>
+        <div style="display: flex;">
+          <%= search_field_tag :search, params[:search], placeholder: "Search for any Tweet or Person", class: "form-control",id:"search_field", style: "dislpay: flex;"%>
+          <div class="butn" style="margin-left: 20px; width:90px;">
+            <%= button_tag "Search", :class => "btn btn-outline-success", :name => nil %> 
+          </div>
+        </div>
+      <% end %>
+    
+      
+    <div class="linkst">
+      <% if user_signed_in? %> 
+        <strong style="margin-top: 18px;"> Welcome <%= current_user.name %> </strong>
+        <div class="img1">
+          <a href="/home">
+            <% if current_user.photo.attached? %>
+              <image src="<%=(url_for(current_user.photo))%>", style = "height: 40px; width: 40px; margin: 10px; margin-left: 20px;">
+            <% else %>
+              <%= image_tag "user_profile.svg", style: "height: 40px; width: 40px; margin: 10px;" %>
+            <%end%>
+          </a>
+        </div>
+        <div class="signout", style="margin-top: 10px;">
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary" %>
+        </div>
+      <%end%> 
+    </div>
+  </nav>
+<% else %>
+<div style=" margin-left: 80%; margin-top: 4%; ">
+    <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline-primary" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary" %>
+</div>
+<% end %>
+</div>
+<script>
+
+   $(document).ready(function () {
+
+      $("search_field").val("");
+
+    });
+
+    </script>

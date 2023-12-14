@@ -1,0 +1,27 @@
+<div class="boxed" style="height: 300px; width:500px; margin-left: 36.5%;background-color: white; margin-top: 20px;">
+  <div style="padding-top: 20px; padding-left: 20px;">
+    <% if @tweets.images.attached? %>
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <% @tweets.images.each_with_index do |pic,i| %>       
+            <div class="carousel-item <%= "active" if i == 0 %>">           
+              <%= image_tag pic, :width => 440, :height => 200, style:"margin-left: 10px;" %>  
+             </div>
+          <%end%>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div> 
+    <% end%><br>
+    <%= @tweets.content %><br>
+  </div>
+</div>
+
+<br>
+ <%= link_to "Retweet", retweet_path(tweet_id: @tweets), class: "btn btn-primary", style: "margin-left: 47%; margin-bottom-20%;" %>

@@ -1,0 +1,31 @@
+<h3> search result </h3>
+<% @results.each do |result| %>
+      <div class="hh", style="margin-left: 0%;">
+        <strong style="margin-left: 36.5%"><%= @tweet.user.name %></strong> Posted a Tweet:<br>
+      </div>
+      <div class="boxed" style="height: 300px; width:500px; margin-left: 36.5%; background-color: white;">
+        <div style="padding-top: 20px; padding-left: 20px;">
+          <% if tweet.images.attached? %>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <% tweet.images.each_with_index do |pic,i| %>       
+                    <div class="carousel-item <%= "active" if i == 0 %>">           
+                      <%= image_tag pic, :width => 440, :height => 200, style:"margin-left: 10px;" %>  
+                    </div>
+                    <!-- <image src="<%#=(url_for(tweet.images))%>" style="height: 200px; width: 200px;margin-bottom: 2%;"> -->
+                  <%end%>
+                </div>
+                <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>    
+          <% end%><br>
+          <%= @tweet.content %>
+        </div>
+      </div><br><br>
+  	<% end %>

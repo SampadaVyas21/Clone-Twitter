@@ -1,0 +1,32 @@
+<%= form_with model: @user do |form| %>
+  <div class="field" style="margin-left: 500px; margin-top: 50px; margin-right: 500px;">
+    <%= form.label :Email, class: 'form-label' %> 
+    <%= form.text_field :email, placeholder: "Enter Your Email", class: 'form-control' %>
+
+    <div>
+      <%= form.label :Username, class: 'form-label' %>
+      <%= form.text_field :username, class: 'form-control' %>
+    </div>
+    <div>
+      <%= form.label :Name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+    <div>
+      <%= form.label :Bio, class: 'form-label' %>
+      <%= form.text_field :bio, class: 'form-control' %>
+    </div>
+    <br>
+    <div>
+      <% if current_user.photo.attached? %>
+        <image src="<%=(url_for(@user.photo))%>" style= "height: 50px; width: 50px; ">
+    <% else %>
+        <%= image_tag "user_profile.svg", size: "150x150"%>
+      <%end%>
+    <div>
+      <%= form.label "Profile Photo", class: 'form-label' %>
+      <%= form.file_field :photo, class: 'form-control' %>
+  </div>
+  <div class="submit">
+    <%= form.submit "Done", class: "btn btn-primary" %>
+  </div>
+<% end %>

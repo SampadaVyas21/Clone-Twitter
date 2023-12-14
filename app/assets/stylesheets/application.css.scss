@@ -1,0 +1,78 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+/*
+ *= require font-awesome
+ */
+
+@import "font-awesome.css";
+
+
+/** {
+  font-family: Arial, Helvetica, sans-serif;
+}*/
+/*title{
+	text-align: center;
+}
+h2{
+	text-align: center;
+	margin-top: 5%;
+	background-color: #D7E4E7;
+	color: black;
+	font-size: 4.5em;
+}*/
+
+/*body{
+	margin-top: 10%;
+	align-items: center;
+	text-align: center;
+}
+*/
+/*.btn{
+	  margin-left: 48%;
+	  margin-top: 1%;
+	  margin-bottom: 1%;
+	  color: #fff;
+	  padding: 15px 25px;
+	  background-color: #D7E4E7;
+	  color: black;
+	  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+	  box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+	  border-radius: 14px;
+	  font-weight: bold;
+	  font-size: 16px;
+	  border: 0;
+      cursor: pointer;
+}
+
+a{
+	margin-left: 2%;
+	margin-top: 5%;
+	margin-bottom: 2%;
+}
+a:hover {
+  background-color: white;
+}
+
+a:active {
+  background-color: #38D2D2;
+} */
+
+@font-face {
+  font-family: "bootstrap-icons";
+  src: font-url("bootstrap-icons/font/fonts/bootstrap-icons.woff2") format("woff2"),
+    font-url("bootstrap-icons/font/fonts/bootstrap-icons.woff") format("woff");
+}

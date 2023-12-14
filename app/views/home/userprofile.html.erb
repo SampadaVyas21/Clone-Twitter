@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag "custom" %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+  <%= render "ads/ad" %>
+<div class="all" style="width: 100%">
+  <div class="left-column" style="background-color: #F4FAFB; float: left; width: 80%;">
+
+  <!-- <div class="scroll"> -->
+    <div class="profile">
+  	  <div class="top">
+        <% if current_user.photo.attached? %>
+          <image src="<%=(url_for(current_user.photo))%>"style="display: inline-block; position: relative; width: 200px; height: 200px; overflow: hidden; border-radius: 50%; ">
+        <% else %>
+          <%= image_tag "user_profile.svg", size: "150x150"%>
+        <%end%>
+        <div style="display: flex;">
+          <%= current_user.name %>
+          <% if current_user.bluetick || current_user.followers.count > 5 %>
+            <i class="fa fa-check-circle" style="color: #1a53ff;font-size: x-large !important; margin-left: 10px"></i>
+          <%end%>
+        </div>
+        <%= current_user.bio %>
+        <div class="edituser">
+          <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-outline-primary" %>
+        </div>
+      </div>
+      <div class="follows">
+        <%= link_to "Followers #{current_user.followers.count}",home_casebtn_path(home_id = "follower"), class: "btn btn-outline-primary" %>
+        <%= link_to "Followings #{current_user.followees.count}",home_casebtn_path(home_id = "following"), class: "btn btn-outline-primary" %>
+        <%= link_to "Suggestions",home_casebtn_path(home_id = "sugg"), class: "btn btn-outline-primary" %>
+      </div>
+    </div><br>
+    <!-- <style>
+      div.scroll {
+        background-color: #F4FAFB ;
+        width: 100%;
+        height: 2000px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 20px;
+      }
+    </style> -->
+    <%= render template: "tweets/index" %> 
+    <%= yield(:mytweet) %>
+
+</body>

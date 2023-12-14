@@ -1,0 +1,43 @@
+
+<% @results.each do |result| %>
+  <div class="hh", style="margin-left: 0%;">
+    <strong style="margin-left: 36.5%"><%= result.user.name %></strong> Posted a Tweet:<br>
+  </div>
+    <div class="boxed" style="height: 300px; width:500px; margin-left: 36.5%; background-color: white;">
+      <div style="padding-top: 20px; padding-left: 20px;">
+        <% if result.images.attached? %>
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <% result.images.each_with_index do |pic,i| %>       
+                <div class="carousel-item <%= "active" if i == 0 %>">           
+                  <%= image_tag pic, :width => 440, :height => 200, style:"margin-left: 10px;" %>  
+                </div>
+              <%end%>
+            </div>
+            <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>    
+        <% end%><br>
+        <%= result.content %>
+      </div>
+    </div>
+    <div class="likebtn" style="display: flex; margin-left: 37%;">
+          <%= result.likescount %>
+          <% pre_like = result.likes.find { |like| like.user_id == current_user.id} %>
+          <% if pre_like %>
+            <%= button_to tweet_like_path(result, pre_like, format: :js),class: 'destroy_like1',id: "myLink", method: :delete do %>
+              <i class="fa fa-thumbs-up destroy_like" style="color: #1a53ff";></i>
+            <% end %>
+          <% else %>
+            <%= button_to tweet_likes_path(result), method: :post do %>
+              <i class="fa fa-thumbs-o-up" aria-hidden="true" style="color: #1a53ff";></i>
+            <% end %>
+          <% end %>
+        </div><br><br>
+<% end %>

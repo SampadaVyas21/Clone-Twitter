@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag "custom" %>
+<% if user_signed_in? %> 
+  <footer, class = 'footer'>
+    <%# content_for :foot do %>
+    <%# end %>
+    <div class="card text-center">
+      <div class="card-header">
+        Featured
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <div class="fbtn">
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+      </div>
+      <div class="card-footer text-muted">
+        2 days ago
+      </div>
+    </div>
+  </footer>
+<%end%>

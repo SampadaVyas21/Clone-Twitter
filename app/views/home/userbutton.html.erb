@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag "custom" %>
+<h1><%= page_name%></h1>
+<table class="table"> 
+	  <thead class="thead-dark">
+	  	<tr>
+      <th scope="col">Name</th>
+        </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <% @users.each do |user| %>
+      <% if current_user.email != user.email %>
+        <td>
+          <% if user.photo.attached? %>
+            <image src="<%=(url_for(user.photo))%>", style = "height: 40px; width: 40px; margin: 10px;">
+          <% else %>
+            <%= image_tag "user_profile.svg", style: "height: 40px; width: 40px; margin: 10px;" %>
+          <%end%>
+          <%= user.name %>
+            <% if user.bluetick? or user.followers.count > 5 %>
+              <i class="fa fa-check-circle increase_size" style="color: #1a53ff;"></i>
+            <%end%> 
+        </td>
+        <%if current_user.followees.include?(user) %>
+          <td>  <%= link_to "Unfollow",unfollow_user_path(user), class: "btn btn-outline-primary" %></td>
+        <%else%>
+          <td>  <%= link_to "Follow",follow_user_path(user), class: "btn btn-outline-primary" %></td>
+        <%end%>
+      <%end%>
+  </tr>
+<% end %>
+</tbody>
+</table>
+   

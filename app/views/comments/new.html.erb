@@ -1,0 +1,8 @@
+<%= form_with model: @comment, url: comments_url(tweet_id: tweet_id) do |form1| %>
+  <div style="margin-left:36.5%; margin-top: 10px; display: flex; ">
+    <%= form1.text_field :body, placeholder: "Enter Your Comment Here", class: "form-control", style: "height: 40px; width: 400px;" %>
+    <div class="submit">
+      <%= form1.submit "Comment", class: "btn btn-primary", style: "margin-left: 10px" %>
+    </div>
+  </div>
+<% end %>

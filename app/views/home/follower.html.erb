@@ -1,0 +1,22 @@
+<h1>Followers</h1>
+<table class="table"> 
+   <thead class="thead-dark">
+      <tr>
+      <th scope="col">Email</th>
+      </tr>
+   </thead>
+   <tbody>
+      <% User.all.each do |user| %>
+      <tr>
+         <% if current_user.followers.include?(user) %>
+               <td><%= user.name %></td>
+               <%if current_user.followees.include?(user) %>
+                  <td>  <%= link_to "Unfollow",unfollow_user_path(user), class: "btn btn-outline-primary" %></td>
+               <%else%>
+                  <td>  <%= link_to "Follow",follow_user_path(user), class: "btn btn-outline-primary" %></td>
+               <%end%>
+            <% end %></tr>
+      <% end %>
+</table>
+
+

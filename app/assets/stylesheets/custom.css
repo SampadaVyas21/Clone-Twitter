@@ -1,0 +1,124 @@
+.thumb{
+	font-size: xx-large;
+}
+
+.nav-item{
+	margin-right: 40px;
+}
+.navbar-nav{
+	margin-right: 80px;
+}
+.fbtn{
+	margin-left: 30px;
+}
+.new_user{
+	margin-right: 300px;
+	margin-left: 300px;
+}
+h2{
+	margin-left: 300px;
+}
+.field{
+	margin-bottom: 15px;
+}
+.form-label{
+	margin-bottom: 0%;
+}
+
+.butn{
+	margin-left: 10px;
+	
+}
+.linkst.btn{
+	margin-left: 5px;
+	margin-right: 2px;
+	display: flex;
+	justify-content: flex-end;
+
+}
+.navbar .form-control{
+	display: block;
+	width: 300px;
+}
+.footer{
+/*  margin-top: auto;*/
+position: relative;
+   background:#6cf;
+}
+
+image_tag{
+	margin-right: 60px;
+}
+.linkst{
+	display: flex;
+}
+.linkst.img1{
+	margin-left: 10px;
+	margin-right: 60%;
+	padding: 40%;
+}
+.top{
+	background-color: #F4FAFB ;
+	align-items: center;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+.follows{
+	align-items: center;
+	text-align: center;
+	margin: 10px;
+	
+}
+.suggest{
+	text-align: center;
+}
+
+.submit{
+	text-align: center;
+	margin-bottom: 35px;
+}
+.boxed {
+/*  border: 1px solid black ;*/
+  width: 100px;
+  height: 50%;
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+.view_tweet {
+	text-align: center;
+	align-content: center;
+}
+
+.likebtn button{
+	margin-top: 10px;
+	color: red;
+}
+
+.scroll strong{
+	margin-left: 50%;
+}
+.sign_up_in{
+	margin-left: 1000px;
+	padding-left: 100px;
+}
+.top image{
+	width: 20px;
+	height: 20px;
+}
+p.notice{
+	margin: 0%;
+}
+.destroy_like1{
+	font-size: xx-large;
+}
+.like{
+	font-size: xx-large;
+}
+.increase_size{
+	width: 200px !important;
+	height: 200px !important;
+}
+

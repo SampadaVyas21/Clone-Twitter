@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
   <tr>
+    <%#= pie_chart Tweet.group(:content).count%>
   <% if flash.any? %>
     <% flash.each do |type, msg| %>
       <div class="alert alert-danger" role="alert">

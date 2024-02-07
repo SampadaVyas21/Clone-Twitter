@@ -28,6 +28,7 @@
         <%= link_to "Followers #{current_user.followers.count}",home_casebtn_path(home_id = "follower"), class: "btn btn-outline-primary" %>
         <%= link_to "Followings #{current_user.followees.count}",home_casebtn_path(home_id = "following"), class: "btn btn-outline-primary" %>
         <%= link_to "Suggestions",home_casebtn_path(home_id = "sugg"), class: "btn btn-outline-primary" %>
+        <%= link_to "Apply for verification", subscription_plans_path, class: "btn btn-outline-primary" %>
       </div>
     </div><br>
     <!-- <style>

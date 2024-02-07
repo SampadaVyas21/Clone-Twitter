@@ -8,7 +8,7 @@ class FollowsController < ApplicationController
 
   def unfollow
     current_user.followed_users.find_by(followee_id: @user.id).destroy
-     redirect_back(fallback_location: user_path(@user))
+    redirect_back(fallback_location: user_path(@user))
   end
 
   private

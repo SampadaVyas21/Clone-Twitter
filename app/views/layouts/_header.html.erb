@@ -39,7 +39,7 @@
         <div style="display: flex;">
           <%= search_field_tag :search, params[:search], placeholder: "Search for any Tweet or Person", class: "form-control",id:"search_field", style: "dislpay: flex;"%>
           <div class="butn" style="margin-left: 20px; width:90px;">
-            <%= button_tag "Search", :class => "btn btn-outline-success", :name => nil %> 
+            <%= button_tag "Search", :class => "buttonClass btn btn-outline-primary", :name => nil %> 
           </div>
         </div>
       <% end %>
@@ -58,15 +58,15 @@
           </a>
         </div>
         <div class="signout", style="margin-top: 10px;">
-          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary" %>
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "buttonClass btn btn-outline-primary" %>
         </div>
       <%end%> 
     </div>
   </nav>
 <% else %>
 <div style=" margin-left: 80%; margin-top: 4%; ">
-    <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline-primary" %>
-    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary" %>
+    <%= link_to "Sign in", new_user_session_path, class: "buttonClass btn btn-outline-primary" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "buttonClass btn btn-outline-primary" %>
 </div>
 <% end %>
 </div>

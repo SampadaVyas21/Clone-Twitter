@@ -43,15 +43,15 @@
                 <%= image_tag "user_profile.svg", style:"display: inline-block; position: relative; width: 40px; height: 40px; overflow: hidden; border-radius: 50%; margin-bottom: 0.5%" %>
               <%end%>
               <% if tweets.user.name == current_user.name %>
-                <strong>You</strong> 
+                <strong class="user_tweeet">You</strong> 
                 <% if tweets.user.bluetick? or tweets.user.followers.count > 5 %>
-                  <i class="fa fa-check-circle increase_size" style="color: #1a53ff; margin: 10px"></i>
+                  <i class="fa fa-check-circle " style="color: #1a53ff; margin: 10px"></i>
                 <%end%>
                 Reposted the below tweet<br>
               <% else %>
-                <strong><%= tweets.user.name %></strong> 
+                <strong class="user_tweeet"><%= tweets.user.name %></strong> 
                 <% if tweets.user.bluetick? or tweets.user.followers.count > 5 %>
-                  <i class="fa fa-check-circle increase_size" style="color: #1a53ff; margin: 10px"></i>
+                  <i class="fa fa-check-circle " style="color: #1a53ff; margin: 10px"></i>
                 <%end%>
                 Reposted the below tweet<br>
               <%end%>
@@ -63,15 +63,15 @@
                       <%= image_tag "user_profile.svg", style:"display: inline-block; position: relative; width: 40px; height: 40px; overflow: hidden; border-radius: 50%; margin: 10px" %>
                     <%end%>
                     <% if tweets.tweet.user.name == current_user.name %>
-                      <strong>You</strong> 
+                      <strong class="user_tweeet">You</strong> 
                       <% if tweets.tweet.user.bluetick? or tweets.tweet.user.followers.count > 5 %>
-                        <i class="fa fa-check-circle increase_size" style="color: #1a53ff;margin: 10px;"></i>
+                        <i class="fa fa-check-circle " style="color: #1a53ff;margin: 10px;"></i>
                       <%end%>
                       Posted a tweet<br>
                     <% else %>
-                      <strong><%= tweets.tweet.user.name %></strong> 
+                      <strong class="user_tweeet"><%= tweets.tweet.user.name %></strong> 
                       <% if tweets.tweet.user.bluetick? or tweets.tweet.user.followers.count > 5 %>
-                        <i class="fa fa-check-circle increase_size" style="color: #1a53ff; margin: 10px"></i>
+                        <i class="fa fa-check-circle " style="color: #1a53ff; margin: 10px"></i>
                       <%end%>
                       Posted a tweet<br>
                     <%end%>
@@ -111,20 +111,20 @@
                   <%= tweets.tweet.likescount %>
                   <% pre_like = tweets.tweet.likes.find { |like| like.user_id == current_user.id} %>
                   <% if pre_like %>
-                    <%= button_to tweet_like_path(tweets.tweet, pre_like),class: 'destroy_like1', id: "myLink", method: :delete do %>
+                    <%= button_to tweet_like_path(tweets.tweet, pre_like), style: "margin-right: 10px !important; margin-left: 2px !important", class: 'buttonClass', id: "myLink", method: :delete do %>
                       <i class="fa fa-thumbs-up destroy_like" style="color: #1a53ff; font-size: x-large !important;"></i>
                     <% end %>
                   <% else %>
-                    <%= button_to tweet_likes_path(tweets.tweet), class: 'like', method: :post do %>
+                    <%= button_to tweet_likes_path(tweets.tweet), style: "margin-right: 10px !important; margin-left: 2px !important", id: "like_tweet", class: 'buttonClass', method: :post do %>
                       <i class="fa fa-thumbs-o-up" aria-hidden="true" style="color: #1a53ff; font-size: x-large !important";></i>
                     <% end %>
                   <% end %>
                   <%= tweets.tweet.comments.count%>
-                  <%= link_to comments_path(tweet_id: tweets.tweet.id), style: "margin-left: 10px;" do %>
+                  <%= link_to comments_path(tweet_id: tweets.tweet.id), style: "margin-left: 2px; margin-right: 10px;" do %>
                     <i class="fa fa-comment" aria-hidden="true" style="color: #1a53ff; font-size: x-large !important"></i>
                   <% end %>
                   <% if tweets.user_id != current_user.id %>
-                    <%= link_to tweet_retweeting_path(tweet_id: tweets.tweet.id), style: "margin-left: 10px;" do %>
+                    <%= link_to tweet_retweeting_path(tweet_id: tweets.tweet.id), style: "margin-left: 2px; margin-right: 10px;" do %>
                       <i class="fa fa-retweet" aria-hidden="true" style="color: #1a53ff; font-size: x-large !important"></i>
                     <%end%>
                   <%end%>    
@@ -138,15 +138,15 @@
                 <%= image_tag "user_profile.svg", style:"display: inline-block; position: relative; width: 40px; height: 40px; overflow: hidden; border-radius: 50%; margin: 10px; margin-bottom: 1%" %>
               <%end%>
               <% if tweets.user.name == current_user.name %>
-                <strong>You</strong> 
+                <strong class="user_tweeet">You</strong> 
                 <% if tweets.user.bluetick? or tweets.user.followers.count > 5 %>
-                  <i class="fa fa-check-circle increase_size" style="color: #1a53ff;"></i>
+                  <i class="fa fa-check-circle" style="color: #1a53ff;"></i>
                 <%end%>
                 Posted a tweet
               <% else %>
-                <strong><%= tweets.user.name %></strong>
+                <strong class="user_tweeet"><%= tweets.user.name %></strong>
                 <% if tweets.user.bluetick? or tweets.user.followers.count > 5 %>
-                  <i class="fa fa-check-circle increase_size" style="color: #1a53ff;margin: 10px;"></i>
+                  <i class="fa fa-check-circle" style="color: #1a53ff;margin: 10px;"></i>
                 <%end%>
                 Posted a Tweet   
               <%end%>
@@ -180,29 +180,40 @@
                     <%= tweets.content %><br>
                   </div>
                 </div>
+                <%= content_tag :div, class: 'likebtn', id: tweets.id do %>
                 <div class="likebtn" style="display: flex; margin-left: 37%;">
-                  <%= tweets.likescount %>
-                    <% pre_like = tweets.likes.find { |like| like.user_id == current_user.id} %>
+                  <div id="like_count_<%=tweets.id%>"><%= tweets.likescount %></div>
+                  <% pre_like = tweets.likes.find { |like| like.user_id == current_user.id} %>
                     <% if pre_like %>
-                      <%= button_to tweet_like_path(tweets, pre_like),class: 'destroy_like1', id: "myLink", method: :delete do %>
-                        <i class="fa fa-thumbs-up destroy_like" style="color: #1a53ff; font-size: x-large !important;"></i>
-                      <% end %>
+                    <%= hidden_field_tag :current_d_id, tweets.id %>
+                    <%= hidden_field_tag :current_l_id, pre_like.id %>
+                    <%= content_tag :div, id: tweets.id, p_id: pre_like.id, class: 'tweet_dislike' do %>
+                      <button class="t_dislike" style="background: transparent; margin-top: 0%; border: none; padding: 3px; margin-right: 6px;"> <i class="fa fa-thumbs-up" id="t_like_<%=tweets.id%>" aria-hidden="true" style="color: #1a53ff; font-size: x-large !important; background-color: transparent !important;" remote= true ></i>
+                      </button>
+                    <% end %>
+                      <%#= button_to tweet_like_path(tweets, pre_like), style: "margin-right: 10px !important; margin-left: 2px !important", class: 'buttonClass', id: "myLink", method: :delete do %>
+                        <!-- <i class="fa fa-thumbs-up destroy_like" style="color: #1a53ff; font-size: x-large !important; background-color: transparent !important;"></i> -->
+                      <%# end %>
                     <% else %>
-                    <%= button_to tweet_likes_path(tweets), class: 'like', method: :post do %>
-                      <i class="fa fa-thumbs-o-up" aria-hidden="true" style="color: #1a53ff; font-size: x-large !important";></i>
+                      <%= hidden_field_tag :current_id, tweets.id %>
+                      <%= content_tag :div, class: 'tweet_like', id: tweets.id do %>
+                      <button class="t_like"  style="background: transparent; margin-top: 0%; border: none; padding: 3px; margin-right: 6px;"> <i class="fa fa-thumbs-o-up" id="t_like_<%=tweets.id%>" aria-hidden="true" style="color: #1a53ff; font-size: x-large !important; background-color: transparent !important;" remote= true></i></button>
+                    <%#= button_to tweet_likes_path(tweets), style: "margin-right: 10px !important; margin-left: 2px !important;", id: "like_tweet", class: 'buttonClass', method: :post, remote: true do %>
+                      <!-- <i class="fa fa-thumbs-o-up" aria-hidden="true" style="color: #1a53ff; font-size: x-large !important; background-color: transparent !important;";></i> -->
                     <% end %>
                   <% end %>
                   <% @following_tweets = tweets %>
                   <%= tweets.comments.count %>
-                  <%= link_to comments_path(tweet_id: tweets.id), style: "margin-left: 10px;" do %>
+                  <%= link_to comments_path(tweet_id: tweets.id), style: "margin-left: 2px; margin-right: 10px;" do %>
                     <i class="fa fa-comment" aria-hidden="true" style="color: #1a53ff; font-size: x-large !important"></i>
                   <% end %>
                   <% if tweets.user_id != current_user.id %>
-                    <%= link_to retweet_path(tweet_id: tweets.id), style: "margin-left: 10px;" do %>
+                    <%= link_to retweet_path(tweet_id: tweets.id), style: "margin-left: 2px; margin-right: 10px" do %>
                       <i class="fa fa-retweet" aria-hidden="true" style="color: #1a53ff; font-size: x-large !important"></i>
                     <%end%>
-                  <%end%>    
+                  <%end%>
                 </div>
+                <%end%>    
                 <% @comment = Comment.new %>
                 <%= render template: "comments/new",  locals: {:tweet_id => tweets.id }  %>
             <% end %> 
@@ -220,16 +231,35 @@
     cursor: pointer;
     margin-right: 11%;
   }
-</style>
-<script>
-  document.addEventListener("DOMContentLoaded", function(event) { 
-    var scrollpos = localStorage.getItem('scrollpos');
-    if (scrollpos) window.scrollTo(0, scrollpos);
+</style> 
+
+<!-- <script>
+$( document ).ready(function() {
+   $(".t_like").on("click", function(event){
+    debugger
+    // console.log($.ajax)
+    $.ajax({
+      url: "/tweets/:tweet_id/likes",
+      method: "POST",
+      success: function(response) { 
+        console.log(response);
+      if (response == true){
+        debugger
+        alert("hello");
+      }   
+      }
+    });
   });
-  window.onbeforeunload = function(e) {
-    localStorage.setItem('scrollpos', window.scrollY);
-  };
-</script>
+});
+
+  // document.addEventListener("DOMContentLoaded", function(event) { 
+  //   var scrollpos = localStorage.getItem('scrollpos');
+  //   if (scrollpos) window.scrollTo(0, scrollpos);
+  // });
+  // window.onbeforeunload = function(e) {
+  //   localStorage.setItem('scrollpos', window.scrollY);
+  // };
+</script> -->
 <!-- <script type="text/javascript">
   $("#myLink").on("ajax:beforeSend", function(){
     var element = document.getElementsByClassName("destroy_like")

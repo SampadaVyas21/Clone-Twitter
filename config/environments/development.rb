@@ -72,4 +72,8 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  config.active_storage.replace_on_assign_to_many = true
+
+  # ENV['razorpay_id'] = 'rzp_test_CzInVsmPYOMFQA'
+  # ENV['razorpay_secret_key'] = 'dWHYz8PZQX2MICmVPMLHMq3F'
 end

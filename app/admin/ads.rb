@@ -1,10 +1,29 @@
 ActiveAdmin.register Ad do
-
+  require 'open-uri'
   permit_params :priorkey, :details, ads_images: []
   filter :priorkey
   actions :all
   RESTRICTED_ACTIONS = ["new"]
   
+  action_item only: :index do
+    link_to 'Upload CSV', action: 'upload_csv'
+  end
+
+  collection_action :upload_csv do
+    render 'admin/csv/upload_csv'
+  end
+
+  collection_action :import_csv, method: :post do
+    redirect_to({ action: :index}, flash: { notice: "Incorrect file format"}) and return if params[:dump][:file].content_type != "text/csv"
+    ads = CsvHelper.convert_to_ads(params[:dump][:file])
+    
+    if !ads.present?
+      redirect_to({ action: :index}, flash: { notice: 'successfully imported'} )
+    else
+      redirect_to({ action: :index }, flash: { error: ads})
+    end
+  end
+
   index do
     selectable_column
     id_column
@@ -64,6 +83,7 @@ ActiveAdmin.register Ad do
       else
         super 
       end
+
     end
   end
 end

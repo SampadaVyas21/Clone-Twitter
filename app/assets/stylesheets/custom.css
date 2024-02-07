@@ -25,10 +25,11 @@ h2{
 	margin-bottom: 0%;
 }
 
-.butn{
+/*.butn{
 	margin-left: 10px;
+	background-color: white;
 	
-}
+}*/
 .linkst.btn{
 	margin-left: 5px;
 	margin-right: 2px;
@@ -42,7 +43,10 @@ h2{
 }
 .footer{
 /*  margin-top: auto;*/
-position: relative;
+	position: relative;
+	left: 0%;
+	bottom: 0%;
+	width: 80%;
    background:#6cf;
 }
 
@@ -84,7 +88,6 @@ image_tag{
   height: 50%;
   width: 250px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
 }
 
 .view_tweet {
@@ -94,7 +97,7 @@ image_tag{
 
 .likebtn button{
 	margin-top: 10px;
-	color: red;
+	background-color: transparent !important;
 }
 
 .scroll strong{
@@ -113,12 +116,19 @@ p.notice{
 }
 .destroy_like1{
 	font-size: xx-large;
+	background-color: transparent !important;
 }
 .like{
 	font-size: xx-large;
+	background-color: transparent !important;
 }
 .increase_size{
 	width: 200px !important;
 	height: 200px !important;
 }
 
+.test {
+
+	background-color: transparent !important;
+	border-color: red;
+}

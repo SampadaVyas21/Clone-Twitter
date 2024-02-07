@@ -1,0 +1,11 @@
+<%= select_tag "month", options_for_select(%w[January February March April May June July August September October November December]), :id => 'selected_month' %>
+<%= select_tag "year", options_for_select([" ", "2021","2022", "2023", "2024"], " "), :id => 'selected_year' %>
+<%= bar_chart Tweet.group_by_month(:created_at, format: "%B").count %>
+<!-- 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+	$( document ).ready(function() {
+		debugger
+    $('#selected_month').on("change",function(event) {
+    });
+  });
+</script> -->

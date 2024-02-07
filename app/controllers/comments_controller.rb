@@ -8,8 +8,6 @@ class CommentsController < ApplicationController
 	def new
     @tweet = Tweet.find_by(params[:tweet_id])
     @comment = Comment.new
-    debugger
-    redirect_to tweet_path
   end
 	
 	def create

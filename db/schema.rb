@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_20_090612) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_06_083044) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -109,6 +109,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_20_090612) do
     t.index ["user_id"], name: "index_retweets_on_user_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "plan"
+    t.datetime "validity"
+    t.string "price"
+    t.boolean "activated", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tweets", force: :cascade do |t|
     t.string "content"
     t.string "likescount"
@@ -117,6 +126,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_20_090612) do
     t.datetime "updated_at", null: false
     t.boolean "report"
     t.index ["user_id"], name: "index_tweets_on_user_id"
+  end
+
+  create_table "user_subscriptions", force: :cascade do |t|
+    t.integer "plan"
+    t.datetime "validity"
+    t.string "price"
+    t.boolean "activated", default: false
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

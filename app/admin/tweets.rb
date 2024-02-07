@@ -105,6 +105,15 @@ ActiveAdmin.register Tweet do
     redirect_to admin_user_tweets_path, alert: "The tweets have been unreported."
   end
 
+  member_action :change_month, method: :get do
+    date = params[:month].to_date
+    hsh = {}
+    count = Tweet.where('created_at BETWEEN ? AND  ?', date.beginning_of_month, date.end_of_month).group_by_week(:created_at).count
+    # hsh.store("#{params[:month].to_date.strftime("%B")}", count)
+    count.present? ? count : count = []
+    render json: count
+  end
+
   controller do
     def action_methods
       super - RESTRICTED_ACTIONS

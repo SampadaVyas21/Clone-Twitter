@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag "custom" %>
+<head>
+  <script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%= render "ads/ad" %>
+<div class="all" style="width: 100%">
+  <div class="left-column" style="background-color: #F4FAFB;"> <br>
+    <h3 style="text-align: center;"> At a time you can have only 1 subscription </h3>
+    <% @subscriptions.each do |subscription| %>
+      <div class="boxed" style="margin-left: 35%; padding: 10px;">
+        <h3> Plan: <%= subscription.plan %> </h3>
+        <p> <%= @up %> </p>
+        <p> Valid until : <%= subscription.validity.to_date %> </p>
+        <p> Price Rs <%= subscription.price %> </p>
+        <% if current_user.user_subscription %>
+          <% if subscription.price == current_user.user_subscription.price && Date.today <= subscription.validity.to_date %>
+            <button> Purchased </button> 
+          <% else %>
+            <button class="btn btn-outline-primary", style= "background-color: transparent; background: transparent; color: transparent"> Purchase </button>
+          <%end%>
+        <% else %>  
+          <%= link_to "Purchase", razorpay_p_path(subscription.id),  class: "btn btn-outline-primary" if !current_user.user_subscription %>
+        <% end %>
+      </div><br>
+    <% end %> <br>
+  </div>
+</div>

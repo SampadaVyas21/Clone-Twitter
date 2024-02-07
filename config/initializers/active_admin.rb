@@ -6,7 +6,6 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "Project"
   config.register_javascript 'https://www.google.com/jsapi'
-  config.register_javascript "http://code.highcharts.com/highcharts.js"
   config.register_javascript "chartkick.js"
 
   # Set the link url for the title. For example, to take

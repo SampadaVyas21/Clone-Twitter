@@ -24,12 +24,20 @@ Rails.application.routes.draw do
   resources :users
   resources :tweets do
     get 'retweeting'
-    resources :likes
+    resources :likes do
+      collection do
+        get :check
+      end
+    end
   end
+  # get "/tweets/:tweet_id/likes/check", to: "likes#check", on: :collection
   resources :comments
   post "/create_comment/:tweet_id", to: "comments#create_comment", as: :create_comment
   get "/tweet_feed", to: "tweets#feed", as: "tweet_feed" 
   get "/comment_page/:tweet_id/comments", to: "comments#comment_page", as: "comment_page"
   get "/retweet", to: "retweets#retweet", as: "retweet" 
   # get "/retweeting", to: "tweets#retweeting", as: "retweeting" 
+  get "/subscription_plans", to: "subscriptions#subs_plans", as: "subscription_plans"
+  get "/razorpay_p/:id", to: "subscriptions#razorpay_p", as: "razorpay_p"
+  post '/subscription_v/:id',  to: 'subscriptions#subscription_v', as: "verify_subscription"
 end

@@ -11,9 +11,9 @@ module Project
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
-    # config.assets.paths << "#{Rails.root}/app/assets/videos"
+    config.assets.paths << "#{Rails.root}/app/assets/videos"
     config.action_mailer.asset_host = 'http://localhost:3000'
-
+    # config.active_storage.replace_on_assign_to_many = true
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

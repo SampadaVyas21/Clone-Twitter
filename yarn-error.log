@@ -1,8 +1,8 @@
 Arguments: 
-  /home/rails-16/.nvm/versions/node/v18.0.0/bin/node /home/rails-16/.cache/node/corepack/yarn/1.22.19/bin/yarn.js add esbuild~
+  /home/rails-16/.nvm/versions/node/v18.0.0/bin/node /home/rails-16/.cache/node/corepack/yarn/1.22.19/bin/yarn.js build
 
 PATH: 
-  /home/rails-16/.nvm/versions/node/v18.0.0/bin:/home/rails-16/.rbenv/shims:/home/rails-16/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+  /home/rails-16/.rbenv/versions/3.0.6/lib/ruby/gems/3.0.0/bin:/home/rails-16/.rbenv/versions/3.0.6/bin:/home/rails-16/.rbenv/libexec:/home/rails-16/.rbenv/plugins/ruby-build/bin:/home/rails-16/.nvm/versions/node/v18.0.0/bin:/home/rails-16/.rbenv/shims:/home/rails-16/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
 Yarn version: 
   1.22.19
@@ -14,31 +14,35 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/esbuild~: Not found
-      at params.callback [as _callback] (/home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:66145:18)
-      at self.callback (/home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:140890:22)
-      at Request.emit (node:events:527:28)
-      at Request.<anonymous> (/home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:141862:10)
-      at Request.emit (node:events:527:28)
-      at IncomingMessage.<anonymous> (/home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:141784:12)
-      at Object.onceWrapper (node:events:641:28)
-      at IncomingMessage.emit (node:events:539:35)
-      at endReadableNT (node:internal/streams/readable:1344:12)
-      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+  Invariant Violation: Script must exist
+      at invariant (/home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:2318:15)
+      at /home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:61545:11
+      at Generator.next (<anonymous>)
+      at step (/home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:310:30)
+      at /home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:328:14
+      at new Promise (<anonymous>)
+      at new F (/home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:5305:28)
+      at /home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:307:12
+      at realRunCommand (/home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:61630:23)
+      at action.action (/home/rails-16/.cache/node/corepack/yarn/1.22.19/lib/cli.js:61691:16)
 
 npm manifest: 
   {
     "dependencies": {
       "@fortawesome/fontawesome-free": "^6.4.2",
+      "@popperjs/core": "^2.11.8",
       "@rollup/plugin-node-resolve": "^15.2.3",
+      "bootstrap": "^5.3.2",
       "bootstrap-icons": "^1.11.1",
+      "chart.js": "^4.4.1",
+      "chartkick": "^5.0.1",
       "esbuild": "^0.19.5",
       "rollup": "^4.1.4",
       "webpack": "^5.89.0",
       "webpack-cli": "^5.1.4"
     },
     "scripts": {
-      "build": "bun bun.config.js"
+      "build": ""
     }
   }
 
@@ -209,6 +213,16 @@ Lockfile:
     dependencies:
       "@jridgewell/resolve-uri" "^3.1.0"
       "@jridgewell/sourcemap-codec" "^1.4.14"
+  
+  "@kurkle/color@^0.3.0":
+    version "0.3.2"
+    resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.2.tgz#5acd38242e8bde4f9986e7913c8fdf49d3aa199f"
+    integrity sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==
+  
+  "@popperjs/core@^2.11.8":
+    version "2.11.8"
+    resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz"
+    integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
   
   "@rollup/plugin-node-resolve@^15.2.3":
     version "15.2.3"
@@ -502,8 +516,13 @@ Lockfile:
   
   bootstrap-icons@^1.11.1:
     version "1.11.1"
-    resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.11.1.tgz#79e32494871d8c98e9d14f4bcdc278cee9b1dafd"
+    resolved "https://registry.npmjs.org/bootstrap-icons/-/bootstrap-icons-1.11.1.tgz"
     integrity sha512-F0DDp7nKUX+x/QtpfRZ+XHFya60ng9nfdpdS59vDDfs4Uhuxp7zym/QavMsu/xx51txkoM9eVmpE7D08N35blw==
+  
+  bootstrap@^5.3.2:
+    version "5.3.2"
+    resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.2.tgz"
+    integrity sha512-D32nmNWiQHo94BKHLmOrdjlL05q1c8oxbtBphQFb9Z5to6eGRDCm0QgeaZ4zFBHzfg2++rqa2JkqCcxDy0sH0g==
   
   browserslist@^4.14.5:
     version "4.22.1"
@@ -529,6 +548,27 @@ Lockfile:
     version "1.0.30001551"
     resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001551.tgz"
     integrity sha512-vtBAez47BoGMMzlbYhfXrMV1kvRF2WP/lqiMuDu1Sb4EE4LKEgjopFDSRtZfdVnslNRpOqV/woE+Xgrwj6VQlg==
+  
+  chart.js@4, chart.js@^4.4.1:
+    version "4.4.1"
+    resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-4.4.1.tgz#ac5dc0e69a7758909158a96fe80ce43b3bb96a9f"
+    integrity sha512-C74QN1bxwV1v2PEujhmKjOZ7iUM4w6BWs23Md/6aOZZSlwMzeCIDGuZay++rBgChYru7/+QFeoQW0fQoP534Dg==
+    dependencies:
+      "@kurkle/color" "^0.3.0"
+  
+  chartjs-adapter-date-fns@>=3:
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/chartjs-adapter-date-fns/-/chartjs-adapter-date-fns-3.0.0.tgz#c25f63c7f317c1f96f9a7c44bd45eeedb8a478e5"
+    integrity sha512-Rs3iEB3Q5pJ973J93OBTpnP7qoGwvq3nUnoMdtxO+9aoJof7UFcRbWcIDteXuYd1fgAvct/32T9qaLyLuZVwCg==
+  
+  chartkick@^5.0.1:
+    version "5.0.1"
+    resolved "https://registry.yarnpkg.com/chartkick/-/chartkick-5.0.1.tgz#f557ff8560f974343dc65c7fc34ce1e8326d8ee7"
+    integrity sha512-4F3tWI3eBQgnjCYZIZ+fHOaJuNyxeyhDE2Tm+voOWB19hDjSJceys/spzN52DOn8bWepNESGXvPVTGU1jeFsbA==
+    optionalDependencies:
+      chart.js "4"
+      chartjs-adapter-date-fns ">=3"
+      date-fns ">=2"
   
   chrome-trace-event@^1.0.2:
     version "1.0.3"
@@ -567,6 +607,11 @@ Lockfile:
       path-key "^3.1.0"
       shebang-command "^2.0.0"
       which "^2.0.1"
+  
+  date-fns@>=2:
+    version "3.0.6"
+    resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-3.0.6.tgz#fe3aeb7592d359f075ffc41cb16139828810ca83"
+    integrity sha512-W+G99rycpKMMF2/YD064b2lE7jJGUe+EjOES7Q8BIGY8sbNdbgcs9XFTZwvzc9Jx1f3k7LB7gZaZa7f8Agzljg==
   
   deepmerge@^4.2.2:
     version "4.3.1"

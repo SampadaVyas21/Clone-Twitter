@@ -58,6 +58,11 @@ gem "rack-cors"
 gem 'activeadmin'
 
 
+# gem 'faker'
+# gem 'fast_jsonapi'
+# gem 'active_admin_flat_skin'
+
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -84,8 +89,21 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "rspec-rails"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'simplecov'
 end
 
 gem "jsbundling-rails", "~> 1.2"
+gem 'razorpay'
+
+
+group :development, :test do
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "rspec-rails"
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+end

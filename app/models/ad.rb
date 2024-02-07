@@ -28,4 +28,8 @@ class Ad < ApplicationRecord
       errors.add(:details, "Details must present")
     end
   end
+
+  # def ads_images=(attachables)
+  #   ads_images.attach(attachables)
+  # end
 end

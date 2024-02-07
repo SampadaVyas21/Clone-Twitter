@@ -17,7 +17,7 @@ ActiveAdmin.register_page "Dashboard" do
         
         column do
           panel "Tweet content: " do
-            pie_chart Tweet.group(:content).count, donut: true
+            pie_chart Tweet.group(:content).count, donut: true, cutoutPercentage: 75
           end
         end
 
@@ -38,14 +38,30 @@ ActiveAdmin.register_page "Dashboard" do
       columns do
 
         column do
-          panel "Tweets per month" do
-            bar_chart Tweet.group_by_month(:created_at, format: "%B").count
+          panel "months" do 
+            render "admin/chartkick"
+            # select :months, :class => 'selected_month' do 
+            #   %w(January February March April May June July August September October November December).each do |opt|
+            #     option opt, :value => opt, remote: true ,
+            #     script: (document).on("click", option(){
+            #               debugger
+            #             });
+            #   end
+            # end
+            # ul do
+            #   bar_chart Tweet.group_by_month(:created_at, format: "%B").count
+            # end
           end
         end
+      end
+
+      columns do
 
         column do
           panel "user with most tweets" do
-            bar_chart Tweet.group(:user_id).count
+            hsh = {}
+            Tweet.all.each{|a| hsh = hsh.merge("#{a.user.name}": Tweet.where(user_id: a.user_id).count)}
+            bar_chart hsh
           end
         end
 

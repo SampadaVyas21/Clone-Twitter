@@ -10,11 +10,7 @@ class LikesController < ApplicationController
     		count = @tweet.likescount
     		@tweet.update(likescount: count.to_i + 1)
     	end
-    	respond_to do |format|
-      format.html 
-      format.js # handle ajax request
-    end 
-    	 redirect_to tweet_feed_path(@tweet)
+	    render json: @tweet.likes.count
   	end
 
   	def destroy
@@ -25,8 +21,17 @@ class LikesController < ApplicationController
   			flash[:notice] = "Cannot unlike"
   		end
   		@tweet.update(likescount: count.to_i - 1)
-  		redirect_to tweet_feed_path(@tweet)
-	end
+  		render json: @tweet.likes.count
+		end
+
+		def check
+			if already_liked?
+			pre_like = Like.where(user_id: current_user.id, tweet_id: params[:tweet_id]).ids
+				render json: pre_like.to_a
+			else
+				render json: false
+			end
+		end
 
   	private
   	def already_liked?
@@ -34,10 +39,10 @@ class LikesController < ApplicationController
 	end
 
   	def find_tweet
-   	@tweet = Tweet.find(params[:tweet_id])
+   	@tweet = Tweet.find_by(id: params[:tweet_id])
   	end
 
   	def find_like
-   	@like = @tweet.likes.find(params[:id])
+   	@like = @tweet.likes.find_by(id: params[:id])
 	end
 end

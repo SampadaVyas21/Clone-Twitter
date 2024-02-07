@@ -11,7 +11,51 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
+@import "font-awesome";
+
+
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+.user_tweeet {
+	margin-left: 1px !important;
+}
+
+.nav-link{
+	text-decoration: none !important;
+}
+
+.btn{
+	background-color: none !important;
+}
+
+.linkst{
+	margin-left: 20%; 
+}
+
+.buttonClass {
+	background: transparent !important;
+	color: #1a53ff !important;
+	background-color: #1a53ff;
+	margin-top: 1% !important;
+	margin-right: 15% !important;
+	margin-left: 2% !important;
+	padding: 0%;
+}
+
+i.fa{
+	background: transparent !important;
+	height: 10px !important;
+	width: 10px !important;
+	margin-right: 10px !important;
+}
+a.btn{
+	text-decoration: none;
+}
+
+
+.likebtn{
+	margin-top: 5px !important;
+}

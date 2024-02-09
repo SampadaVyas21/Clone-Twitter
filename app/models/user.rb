@@ -20,9 +20,9 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 3 }
   validates :bio, length: { maximum: 30 }
 
-  def past_retweets_chart
-    Retweet.where(:user_id => self.id)
-  end
+  # def past_retweets_chart
+  #   Retweet.where(:user_id => self.id)
+  # end
 
   def self.ransackable_attributes(auth_object = nil)
     ["bio", "created_at", "email", "followees", "followers", "id", "name", "bluetick", "updated_at", "username", "photo"]

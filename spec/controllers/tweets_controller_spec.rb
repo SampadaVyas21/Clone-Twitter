@@ -1,20 +1,22 @@
 require 'rails_helper'
 RSpec.describe TweetsController, type: :controller do
+	let!(:success_message) { " returns a successful response "}
 	before do
+		@success_message = success_message
 		@user = FactoryBot.create(:user)
 		@tweet = FactoryBot.create(:tweet, user_id: @user.id)
 		@comment = FactoryBot.create(:comment, tweet_id: @tweet.id, user_id: @user.id)
 		sign_in @user
   end
 	describe 'GET index' do
-		it "returns a successful response" do
+		it @success_message do
 			get :index
 			expect(response).to have_http_status(200)
 		end
 	end
 
 	describe 'GET new' do
-		it 'returns successful response' do
+		it @success_message do
 			get :new
 			expect(response).to have_http_status(200)
 		end
@@ -34,14 +36,14 @@ RSpec.describe TweetsController, type: :controller do
 	end
 
 	describe 'GET feed' do 
-		it 'returns a successful response' do 
+		it @success_message do 
 			get :feed
 			expect(response).to have_http_status(200)
 		end
 	end
 
 	describe 'GET retweeting' do 
-		it 'returns a successful response' do
+		it @success_message do
 			get :retweeting, params: { tweet_id: @tweet.id }
 			expect(response).to have_http_status(200) 
 		end

@@ -43,7 +43,7 @@ ActiveAdmin.register User do
       row :name
       row :bluetick
       row :photo do |p|
-        image_tag p.photo, :size => "200x200" 
+        image_tag p.photo, :size => "200x200" if p.photo.attached?
       end
       row 'followees' do |obj|
         obj.followees.count
@@ -64,7 +64,7 @@ ActiveAdmin.register User do
       f.input :name, input_html: { disabled: true } 
       f.input :bio, input_html: { disabled: true } 
       f.input :bluetick, as: :boolean
-      f.input :photo, as: :file, hint: image_tag(f.object.photo), :size => "200x200" 
+      f.input :photo, as: :file, hint: image_tag(f.object.photo), :size => "200x200" if f.object.photo.attached?
     end
     f.actions
   end

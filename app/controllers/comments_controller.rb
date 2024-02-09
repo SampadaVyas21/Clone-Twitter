@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-	  
+
   def index
     @tweett = Tweet.find(params[:tweet_id])
     @com = @tweett.comments

@@ -1,5 +1,5 @@
 ActiveAdmin.register Tweet do
-
+  config.batch_actions = true
   belongs_to :user
 
   # See permitted parameters documentation:
@@ -40,7 +40,7 @@ ActiveAdmin.register Tweet do
           row "Images" do |p|
             p.images.map do |photo|    
               if photo.content_type.include?("image")
-                image_tag url_for(photo), :size => "200x200"
+                image_tag url_for(photo), :resize => '200x200'
               else
                 video_tag url_for(photo), :size => "200x200" ,autoplay: true, muted: 'muted', loop: :loop
               end

@@ -13,7 +13,7 @@ class Tweet < ApplicationRecord
   accepts_nested_attributes_for :comments
 
   def self.search(search)
-    where("lower(user.name) LIKE :search", search: "%#{search.downcase}%").uniq
+    where("lower(user.name) LIKE :search", search: "%#{search.downcase}%").uniq if Rails.env == 'development'
   end
 
   private

@@ -13,6 +13,11 @@
 
 @import "font-awesome";
 
+@import 'quill.snow';
+@import 'activeadmin/quill_editor/quill.snow';
+@import 'activeadmin/quill_editor_input';
+
+
 
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
@@ -58,4 +63,8 @@ a.btn{
 
 .likebtn{
 	margin-top: 5px !important;
+}
+
+#user_bluetick_input {
+  padding: 10px !important;
 }

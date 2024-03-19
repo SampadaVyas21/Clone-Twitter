@@ -7,6 +7,9 @@
 
 // = require active_admin/base
 
+//= require quill.min
+//= require activeadmin/quill_editor/quill
+//= require activeadmin/quill_editor_input
 
 // import { Application } from "@hotwired/stimulus"
 
@@ -18,6 +21,8 @@
 
 // export { application }
 
+
+
 $( document ).ready(function() {
   $('#selected_month').on("change",function(event) {
     var month = $(this).val();
@@ -27,6 +32,7 @@ $( document ).ready(function() {
     year.value = " "
   });
   $('#selected_year').on("click",function(event) {
+    debugger
     var year = $(this).val();
     var month = document.getElementById("selected_month").value
     $.ajax({
@@ -44,5 +50,15 @@ $( document ).ready(function() {
        chart.updateData(response)
       }
     });
+  });
+
+  $('.label').on("click", function(event){
+    var list = document.getElementsByClassName('label')
+    list[2].removeAttribute('for')
+  });
+
+  $('#user_bluetick_input').on("click", function(event){
+    var list = document.getElementsByClassName('boolean input optional')
+    list[0].childNodes[1].id = 'user_bluetick'
   });
 }); 

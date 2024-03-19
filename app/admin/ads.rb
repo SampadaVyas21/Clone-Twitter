@@ -4,9 +4,9 @@ ActiveAdmin.register Ad do
   filter :priorkey
   actions :all
   RESTRICTED_ACTIONS = ["new"]
-  
+ 
   action_item only: :index do
-    link_to 'Upload CSV', action: 'upload_csv'
+    link_to 'Upload CSV', action: 'upload_csv' if Ad.all.count < 5
   end
 
   collection_action :upload_csv do
@@ -28,7 +28,9 @@ ActiveAdmin.register Ad do
     selectable_column
     id_column
     column :priorkey
-    column :details
+    column :details do |d|
+      d.details.html_safe
+    end
     column 'Images' do |p| 
       p.ads_images.map do |photo|
         if photo.content_type.include?("image")
@@ -43,7 +45,9 @@ ActiveAdmin.register Ad do
 
   show do
     attributes_table do
-      row :details
+      row :details do |d|
+        d.details.html_safe
+      end
       row :priorkey
       row "Images" do |p|
         p.ads_images.map do |photo|    
@@ -61,7 +65,7 @@ ActiveAdmin.register Ad do
   form do |f|
     f.inputs do
       f.input :priorkey, as: :select, collection: Ad::STATUSES.invert, :prompt => "Select Priority"
-      f.input :details
+      f.input :details, as: :quill_editor
       f.input :ads_images, as: :file, input_html: { multiple: true }
     end
     if ad.ads_images.attached?

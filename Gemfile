@@ -56,6 +56,9 @@ gem "image_processing", ">= 1.2"
 gem "rack-cors"
 
 gem 'activeadmin'
+gem 'quill-editor-rails'
+gem 'activeadmin_quill_editor'
+gem 'sassc'
 
 
 # gem 'faker'
